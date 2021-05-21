@@ -155,12 +155,30 @@ IMPFEN = [
       "vaccine": "Astra",
       "name": "Aubacke - Zahnarztpraxis Daniel und Pirk"
    },
-   # {
-   #    "availabilities_url": "",
-   #    "booking_url": "",
-   #    "vaccine": "",
-   #    "name": ""  #
-   # }
+   {
+      "availabilities_url": "visit_motive_ids=2828563&agenda_ids=466062&insurance_sector=public&practice_ids=23239&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/frauenarzt/berlin/susanne-eipper",
+      "vaccine": "Astra",
+      "name": "Susanne Eipper"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2810579&agenda_ids=466062&insurance_sector=public&practice_ids=23239&limit=4",
+      "booking_url": "https://www.doctolib.de/frauenarzt/berlin/susanne-eipper",
+      "vaccine": "Astra",
+      "name": "Susanne Eipper"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2769431&agenda_ids=466062&insurance_sector=public&practice_ids=23239&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/frauenarzt/berlin/susanne-eipper",
+      "vaccine": "Biontech",
+      "name": "Susanne Eipper"  
+   },
+   {
+      "availabilities_url": "",
+      "booking_url": "",
+      "vaccine": "",
+      "name": ""  
+   },
    # "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra": {
    #    "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
    #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
@@ -174,9 +192,6 @@ IMPFEN = [
    #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
    # },
 ]
-
-#      "availabilities_url": "",
-#      "booking_url": ""   
 
 msg = ""
 
@@ -243,7 +258,7 @@ async def extract_all():
               fetch,
               i
           )
-          for (i) in IMPFEN
+          for i in [i for i in IMPFEN if i["name"] != ""]
       ]
 
       msg = ""
