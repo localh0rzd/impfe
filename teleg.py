@@ -112,7 +112,8 @@ async def extract_all():
       ]
 
       msg = ""
-      for response in await asyncio.gather(*tasks):
+      responses = sorted(await asyncio.gather(*tasks), key=lambda v: v["k"])
+      for response in responses:
          if response["next_date"] is not None:
             msg += f'{response["k"]}: {response["next_date"]}\n{response["booking_url"]}\n\n'
 
