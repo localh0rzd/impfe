@@ -13,7 +13,6 @@ from timeit import default_timer
 from concurrent.futures import ThreadPoolExecutor
 from settings import settings
 from time import sleep
-
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--broadcast", action="store_true")
 args = parser.parse_args()
@@ -22,6 +21,7 @@ sys.stdin.reconfigure(encoding='utf-8')
 
 BROADCAST = args.broadcast
 TELEGRAM_URL = f"https://api.telegram.org/bot{settings['BOT_TOKEN']}/sendMessage"
+MIN_DATE = datetime.datetime.strptime("2021-06-07", '%Y-%m-%d')
 
 IMPFEN = {
    "TXL-Moderna": {
@@ -93,9 +93,11 @@ def fetch(k,v):
          print("{}: {}".format(k, res))
          next_date = None
          if "next_slot" in res:
-           next_date = res["next_slot"]
+            next_date = res["next_slot"]
          if len(res["availabilities"]) > 0:
-           next_date = res["availabilities"][0]["date"]
+            next_date = res["availabilities"][0]["date"]
+         if next_date is not None and next_date < MIN_DATE:
+            next_date = None 
          return {"k": k, "next_date": next_date, "booking_url": v["booking_url"]}
 
 async def extract_all():
