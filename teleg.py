@@ -55,16 +55,54 @@ IMPFEN = {
       "availabilities_url": "visit_motive_ids=2495719&agenda_ids=397800-397776-402408-397766&insurance_sector=public&practice_ids=158431&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158431"
    },
+   "Dr. Buck-Astra": {
+      "availabilities_url": "visit_motive_ids=2781225&agenda_ids=449606&insurance_sector=public&practice_ids=177519&destroy_temporary=true&limit=4",
+      "booking_url": "https://doctolib.de/praxis/berlin/hausarztpraxis-dr-buck"
+   },
    "Dr. Vallee-Astra": {
       "availabilities_url": "visit_motive_ids=2854065&agenda_ids=473564-473533&insurance_sector=public&practice_ids=110842&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-dr-vallee"
-},
+   },
    "Dr. Vallee-JJ": {
       "availabilities_url": "visit_motive_ids=2885284&agenda_ids=473564-473533&insurance_sector=public&practice_ids=110842&limit=4",
       "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-dr-vallee"
-   }
+   },
+   "Kardios-Astra": {
+      "availabilities_url": "visit_motive_ids=2854139&agenda_ids=469346&insurance_sector=public&practice_ids=76464&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/kardios-kardiologen-in-berlin-berlin"   
+   },
+   "HNO FHain-Astra": {
+      "availabilities_url": "visit_motive_ids=2731200&agenda_ids=444712&insurance_sector=public&practice_ids=146434&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/hno-praxis-am-friedrichshain"   
+   },
+   "Bonedoctor-Astra": {
+      "availabilities_url": "visit_motive_ids=2774169&agenda_ids=457175&insurance_sector=public&practice_ids=181755&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/gemeinschaftspraxis/berlin/bonedoctor-christian-rose-baharak-djohar"   
+   },
+   "Bonedoctor-Biontech": {
+      "availabilities_url": "visit_motive_ids=2797297&agenda_ids=462529&insurance_sector=public&practice_ids=181755&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/gemeinschaftspraxis/berlin/bonedoctor-christian-rose-baharak-djohar"   
+   },
+   "MVZ Dr. Kaleth & Kollegen-Astra": {
+      "availabilities_url": "visit_motive_ids=2780870&agenda_ids=284796-465045&insurance_sector=public&practice_ids=112562&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/mvz-dr-kaleth-kollegen"   
+   },
+   "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra (ab 30)": {
+      "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
+   },
+   "Dr. Burkhard Schlich & Dr. Kai Schorn-Biontech (ab 30)": {
+      "availabilities_url": "visit_motive_ids=2884324&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
+   },
+   "Dr. Burkhard Schlich & Dr. Kai Schorn-JJ (ab 30)": {
+      "availabilities_url": "visit_motive_ids=2884332&agenda_ids=444401&insurance_sector=public&practice_ids=141729&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
+   },
 }
 
+#      "availabilities_url": "",
+#      "booking_url": ""   
 
 msg = ""
 
