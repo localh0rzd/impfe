@@ -87,18 +87,22 @@ IMPFEN = {
       "availabilities_url": "visit_motive_ids=2780870&agenda_ids=284796-465045&insurance_sector=public&practice_ids=112562&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/mvz-dr-kaleth-kollegen"   
    },
-   "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra (ab 30)": {
-      "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
-      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
+   "MVZ Ambulantes Gynäkologisches Operationszentrum-JJ": {
+      "availabilities_url": "visit_motive_ids=2880391&agenda_ids=480095&insurance_sector=public&practice_ids=107774&limit=4",
+      "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/ambulantes-gynaekologisches-operationszentrum"   
    },
-   "Dr. Burkhard Schlich & Dr. Kai Schorn-Biontech (ab 30)": {
-      "availabilities_url": "visit_motive_ids=2884324&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
-      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
-   },
-   "Dr. Burkhard Schlich & Dr. Kai Schorn-JJ (ab 30)": {
-      "availabilities_url": "visit_motive_ids=2884332&agenda_ids=444401&insurance_sector=public&practice_ids=141729&limit=4",
-      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
-   },
+   # "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra": {
+   #    "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
+   #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
+   # },
+   # "Dr. Burkhard Schlich & Dr. Kai Schorn-Biontech": {
+   #    "availabilities_url": "visit_motive_ids=2884324&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
+   #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
+   # },
+   # "Dr. Burkhard Schlich & Dr. Kai Schorn-JJ": {
+   #    "availabilities_url": "visit_motive_ids=2884332&agenda_ids=444401&insurance_sector=public&practice_ids=141729&limit=4",
+   #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
+   # },
 }
 
 #      "availabilities_url": "",
