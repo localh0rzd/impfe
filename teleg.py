@@ -125,6 +125,42 @@ IMPFEN = [
       "vaccine": "J&J",
       "name": "MVZ Ambulantes Gynäkologisches Operationszentrum"   
    },
+   {
+      "availabilities_url": "visit_motive_ids=2727573&agenda_ids=445656&insurance_sector=public&practice_ids=107708&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/diabetes-berlin",
+      "vaccine": "Astra",
+      "name": "Diabeteszentrum Kreuzberg"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2827714&agenda_ids=460952&insurance_sector=public&practice_ids=101708&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-dipl-med-rainer-schwitzkowski-fuer-kinder-und-jugendmedizin",
+      "vaccine": "Astra",
+      "name": "Praxis für Kinder- und Jugendmedizin - Dr. med. Schönbeck & Dipl. med. Rainer Schwitzkowski"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2811098&agenda_ids=464630&insurance_sector=public&practice_ids=114350&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/einzelpraxis/berlin/dr-med-frank-werner-kirstein",
+      "vaccine": "Astra",
+      "name": "Praxis für Kinder- und Jugendmedizin - Dr. med. Schönbeck & Dipl. med. Rainer Schwitzkowski"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2836657&agenda_ids=469719&practice_ids=162056&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/krankenhaus/berlin/gkh-havelhoehe-impfzentrum",
+      "vaccine": "Astra",
+      "name": "GKH Havelhöhe - Impfzentrum"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2871021&agenda_ids=477570&insurance_sector=public&practice_ids=153998&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/zahnarztpraxis/berlin/aubacke-zahnarztpraxis-daniel-und-pirk",
+      "vaccine": "Astra",
+      "name": "Aubacke - Zahnarztpraxis Daniel und Pirk"
+   },
+   # {
+   #    "availabilities_url": "",
+   #    "booking_url": "",
+   #    "vaccine": "",
+   #    "name": ""  #
+   # }
    # "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra": {
    #    "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
    #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
