@@ -111,11 +111,12 @@ def fetch(k,v):
    with urllib.request.urlopen(req) as req:
          res = json.loads(req.read().decode("utf-8"))
          print("{}: {}".format(k, res))
+         first_slot = [item for sublist in list(filter(None, map(lambda x: x["slots"], res["availabilities"]))) for item in sublist]
          next_date = None
          if "next_slot" in res:
             next_date = res["next_slot"]
-         if len(res["availabilities"]) > 0:
-            next_date = res["availabilities"][0]["date"]
+         if len(first_slot) > 0:
+            next_date = first_slot[0][:10]
          if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ" in k:
             next_date = None 
          return {"k": k, "next_date": next_date, "booking_url": v["booking_url"]}
@@ -135,6 +136,7 @@ async def extract_all():
 
       msg = ""
       responses = sorted(await asyncio.gather(*tasks), key=lambda v: v["k"])
+      print(responses)
       for response in responses:
          if response["next_date"] is not None:
             msg += f'{response["k"]}: {response["next_date"]}\n{response["booking_url"]}\n\n'
