@@ -320,8 +320,9 @@ async def extract_all():
                try:            
                   delete_msg(store["last_message_metadata"]["result"]["chat"]["id"], store["last_message_metadata"]["result"]["message_id"])
                   del store["last_message_metadata"]
-               except:
-                  pass
+               except Exception as e:
+                  with open("error.log", "a") as log:
+                     log.write(f"Error while deleting message:\n{e}\n")
             print(msg)
             msg_metadata = send(msg)
             store["last_message_metadata"] = msg_metadata
