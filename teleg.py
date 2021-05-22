@@ -242,9 +242,15 @@ def fetch(v):
          next_date = None
          if "next_slot" in res:
             next_date = res["next_slot"]
-         if len(first_slot) > 0:
-            next_date = first_slot[0][:10]
-         if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ" in v["name"]:
+         try:         
+            if len(first_slot) > 0:
+               next_date = first_slot[0][:10]
+         except Exception as e:
+            if not os.path.exists("error.log"):
+               os.mknod("error.log")
+            with open("error.log", "a") as log:
+               log.write(f"Error while parsing first_slot {first_slot[0]}:\n{e}\n")
+         if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ " in v["name"]:
             next_date = None 
          return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
 
