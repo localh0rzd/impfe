@@ -231,7 +231,7 @@ def send_msg(text, id):
 
 def send(text, premium=False):
    if BROADCAST:
-      if premium:
+      if premium == True:
          return send_msg(text, settings["PREMIUM_CHAT"])
       else:
          return send_msg(text, settings["BROADCAST_CHAT"])
