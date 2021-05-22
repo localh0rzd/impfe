@@ -212,6 +212,7 @@ def send_msg(text, id):
       "chat_id": id,
       "text": text,
       "disable_notification": True,
+      "disable_web_page_preview": True
    }
 
    req_data = urllib.parse.urlencode(data).encode()
