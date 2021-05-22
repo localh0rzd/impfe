@@ -310,7 +310,7 @@ async def extract_all():
          """
       if not os.path.exists("impfe.json"):
           os.mknod("impfe.json")
-          with open("impfe.json", 'a') as f: f.write('{"message": "", "last_message_metadata": "", "premium_message": "", "last_premium_message_metadata": ""}')
+          with open("impfe.json", 'a') as f: f.write('{"message": "", "premium_message": ""}')
       with open("impfe.json", "r+") as file:
          store = json.load(file)
          if msg != store["message"]:
