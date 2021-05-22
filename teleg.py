@@ -205,6 +205,7 @@ def delete_msg(chat, msg):
    req = urllib.request.Request(f"https://api.telegram.org/bot{settings['BOT_TOKEN']}/deleteMessage", data=req_data)
    with urllib.request.urlopen(req) as f:
       res = json.loads(f.read().decode("utf-8"))
+      print(res)
       return res
 
 def send_msg(text, id):
@@ -309,7 +310,6 @@ async def extract_all():
 *{k}*:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
          """
-      print(premium_msg)
       if not os.path.exists("impfe.json"):
           os.mknod("impfe.json")
           with open("impfe.json", 'a') as f: f.write('{"message": "", "last_message_metadata": "", "premium_message": "", "last_premium_message_metadata": ""}')
