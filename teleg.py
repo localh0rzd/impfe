@@ -229,8 +229,10 @@ def send_msg(text, id):
       print("An unknown error occured")
       print(text)
 
-def send(text):
+def send(text, premium=False):
    if BROADCAST:
+      if premium:
+         return send_msg(text, settings["PREMIUM_CHAT"])
       return send_msg(text, settings["BROADCAST_CHAT"])
    else:
       return send_msg(text, settings["PRIVATE_CHAT"])
@@ -278,7 +280,6 @@ async def extract_all():
           for i in [i for i in IMPFEN if i["name"] != ""]
       ]
 
-      msg = ""
       appointments = {
          "Astra": [],
          "Biontech": [],
@@ -296,15 +297,21 @@ async def extract_all():
 #🦠 Impfeticker 🦠
 #      """
       msg = ""
+      premium_msg = ""
       for k,v in appointments.items():
          msg += f"""
 *{k}*:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
          """
-
+      for k,v in { "Biontech": appointments["Biontech"], "Moderna": appointments["Moderna"] }.items():
+         premium_msg += f"""
+*{k}*:
+{"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
+         """
+      print(premium_msg)
       if not os.path.exists("impfe.json"):
           os.mknod("impfe.json")
-          with open("impfe.json", 'a') as f: f.write('{"message": "", "last_message_metadata": ""}')
+          with open("impfe.json", 'a') as f: f.write('{"message": "", "last_message_metadata": "", "premium_message": "", "last_premium_message_metadata": ""}')
       with open("impfe.json", "r+") as file:
          store = json.load(file)
          if msg != store["message"]:
@@ -318,9 +325,20 @@ async def extract_all():
             msg_metadata = send(msg)
             store["last_message_metadata"] = msg_metadata
             store["message"] = msg
-            file.seek(0)
-            json.dump(store, file)
-            file.truncate()
+         if premium_msg != store["premium_message"]:
+            if "last_message_metadata" in store:
+               try:            
+                  delete_msg(store["last_premium_message_metadata"]["result"]["chat"]["id"], store["last_premium_message_metadata"]["result"]["message_id"])
+                  del store["last_premium_message_metadata"]
+               except:
+                  pass
+            print(premium_msg)
+            premium_msg_metadata = send(premium_msg, True)
+            store["last_premium_message_metadata"] = premium_msg_metadata
+            store["premium_message"] = premium_msg
+         file.seek(0)
+         json.dump(store, file)
+         file.truncate()
 
 
          # if file.read() != msg and len(msg) > 0:
