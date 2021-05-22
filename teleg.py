@@ -236,7 +236,11 @@ def send(text):
       return send_msg(text, settings["PRIVATE_CHAT"])
 
 def fetch(v):
-   req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={str(datetime.date.today())}&{v['availabilities_url']}", headers={"User-Agent": "lol"})
+   if "IZ " in v["name"]:
+      start_date = "2021-06-07"
+   else:
+      start_date = str(datetime.date.today())
+   req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={start_date}&{v['availabilities_url']}", headers={"User-Agent": "lol"})
    with urllib.request.urlopen(req) as req:
          res = json.loads(req.read().decode("utf-8"))
          print(f'{v["name"]}: {res}')
@@ -254,7 +258,7 @@ def fetch(v):
                log.write(f"Error while parsing first_slot {first_slot[0]}:\n{e}\n")
          if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ " in v["name"]:
             next_date = None 
-         return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+         return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
 
 async def extract_all():
    with ThreadPoolExecutor(max_workers=10) as executor:
