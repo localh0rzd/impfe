@@ -212,7 +212,8 @@ def send_msg(text, id):
       "chat_id": id,
       "text": text,
       "disable_notification": True,
-      "disable_web_page_preview": True
+      "disable_web_page_preview": True,
+      "parse_mode": "markdown"
    }
 
    req_data = urllib.parse.urlencode(data).encode()
@@ -282,13 +283,13 @@ async def extract_all():
             #msg += f'{response["k"]}: {response["next_date"]}\n{response["booking_url"]}\n\n'
 
       #if len(msg) == 0: msg = "Nix frei 😔"
-      msg = f"""
-🦠 Impfeticker 🦠
-
-      """
+#      msg = f"""
+#🦠 Impfeticker 🦠
+#      """
+      msg = ""
       for k,v in appointments.items():
          msg += f"""
-{k}:
+*{k}*:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
          """
 
