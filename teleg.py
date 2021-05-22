@@ -254,7 +254,7 @@ def fetch(v):
                if isinstance(next_date, str):
                   next_date = first_slot[0][:10]
                else:
-                  next-date = first_slot[0]["start_date"][:10]
+                  next_date = first_slot[0]["start_date"][:10]
 
          except Exception as e:
             if not os.path.exists("error.log"):
