@@ -193,8 +193,6 @@ IMPFEN = [
    # },
 ]
 
-msg = ""
-
 def delete_msg(chat, msg):
    data = {
       "chat_id": chat,
@@ -317,12 +315,8 @@ async def extract_all():
          store = json.load(file)
          if msg != store["message"]:
             if "last_message_metadata" in store:
-               try:            
-                  delete_msg(store["last_message_metadata"]["result"]["chat"]["id"], store["last_message_metadata"]["result"]["message_id"])
-                  del store["last_message_metadata"]
-               except Exception as e:
-                  with open("error.log", "a") as log:
-                     log.write(f"Error while deleting message:\n{e}\n")
+               delete_msg(store["last_message_metadata"]["result"]["chat"]["id"], store["last_message_metadata"]["result"]["message_id"])
+               del store["last_message_metadata"]
             print(msg)
             msg_metadata = send(msg)
             store["last_message_metadata"] = msg_metadata
