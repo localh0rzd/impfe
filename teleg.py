@@ -233,7 +233,8 @@ def send(text, premium=False):
    if BROADCAST:
       if premium:
          return send_msg(text, settings["PREMIUM_CHAT"])
-      return send_msg(text, settings["BROADCAST_CHAT"])
+      else:
+         return send_msg(text, settings["BROADCAST_CHAT"])
    else:
       return send_msg(text, settings["PRIVATE_CHAT"])
 
@@ -326,7 +327,7 @@ async def extract_all():
             store["last_message_metadata"] = msg_metadata
             store["message"] = msg
          if premium_msg != store["premium_message"]:
-            if "last_message_metadata" in store:
+            if "last_premium_message_metadata" in store:
                try:            
                   delete_msg(store["last_premium_message_metadata"]["result"]["chat"]["id"], store["last_premium_message_metadata"]["result"]["message_id"])
                   del store["last_premium_message_metadata"]
