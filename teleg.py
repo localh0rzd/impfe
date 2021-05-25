@@ -39,7 +39,7 @@ def fetch_helios(v):
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
       print(f"Error in fetcher_helis: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": True}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": str(e)}
 
 def fetch_jameda(v):
    try:
@@ -397,6 +397,15 @@ async def extract_all():
 <b>{k}</b>:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
          """
+      errorlist = list(filter(lambda x: "error" in x, responses))
+      if len(errorlist) > 0:
+         msg += f"""
+
+<i>Kaputt</i>:
+"""
+         for error in errorlist:
+            msg += f'<a href="{error["booking_url"]}">{error["name"]}</a>: {error["error"]}'
+
       for k,v in { "Biontech": appointments["Biontech"], "Moderna": appointments["Moderna"] }.items():
          premium_msg += f"""
 <b>{k}</b>:
