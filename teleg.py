@@ -210,7 +210,6 @@ def delete_msg(chat, msg):
    req = urllib.request.Request(f"https://api.telegram.org/bot{settings['BOT_TOKEN']}/deleteMessage", data=req_data)
    with urllib.request.urlopen(req) as f:
       res = json.loads(f.read().decode("utf-8"))
-      print(res)
       return res
 
 def send_msg(text, id):
@@ -219,7 +218,7 @@ def send_msg(text, id):
       "text": text,
       "disable_notification": True,
       "disable_web_page_preview": True,
-      "parse_mode": "markdown"
+      "parse_mode": "HTML"
    }
 
    req_data = urllib.parse.urlencode(data).encode()
@@ -316,7 +315,7 @@ async def extract_all():
       responses = sorted(await asyncio.gather(*tasks), key=lambda v: v["name"])
       for response in responses:
          if response["next_date"] is not None:
-            appointments[response["vaccine"]].append(f'{response["name"]}: {response["next_date"]}\n{response["booking_url"]}\n')
+            appointments[response["vaccine"]].append(f'{response["name"]}: <a href="{response["booking_url"]}">{response["next_date"]}</a>\n')
             #msg += f'{response["k"]}: {response["next_date"]}\n{response["booking_url"]}\n\n'
 
       #if len(msg) == 0: msg = "Nix frei 😔"
@@ -327,12 +326,12 @@ async def extract_all():
       premium_msg = ""
       for k,v in appointments.items():
          msg += f"""
-*{k}*:
+<b>{k}</b>:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
          """
       for k,v in { "Biontech": appointments["Biontech"], "Moderna": appointments["Moderna"] }.items():
          premium_msg += f"""
-*{k}*:
+<b>{k}</b>:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
          """
       if not os.path.exists("impfe.json"):
