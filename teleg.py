@@ -22,6 +22,63 @@ sys.stdin.reconfigure(encoding='utf-8')
 BROADCAST = args.broadcast
 MIN_DATE = datetime.datetime.strptime("2021-06-07", '%Y-%m-%d')
 
+def fetcher_helios(v):
+   try:
+      req = urllib.request.Request(v['availabilities_url'], headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
+         "Content-Type": "application/json; charset=utf-8",
+         'Referer': 'https://patienten.helios-gesundheit.de/'})
+      jsondata = json.dumps(v["availiabilities_payload"])
+      jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
+      req.add_header('Content-Length', len(jsondataasbytes))
+      with urllib.request.urlopen(req, jsondata.encode('utf-8')) as req:
+         print(f"Fetched {v['name']}")
+         res = json.loads(req.read().decode("utf-8"))
+         if len(res) > 0:
+            return {"next_date": res, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+         else:
+            return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+   except Exception as e:
+      print(f"Error in fetcher_helis: {e}")
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": True}
+
+
+def fetch_doctolib(v):
+   try:
+      if "IZ " in v["name"]:
+         start_date = "2021-06-07"
+      else:
+         start_date = str(datetime.date.today())
+      req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={start_date}&{v['availabilities_url']}", headers={"User-Agent": "lol"})
+      with urllib.request.urlopen(req) as req:
+            res = json.loads(req.read().decode("utf-8"))
+            #print(f'{v["name"]}: {res}')
+            print(f'Fetched {v["name"]}')
+            first_slot = [item for sublist in list(filter(None, map(lambda x: x["slots"], res["availabilities"]))) for item in sublist]
+            next_date = None
+            if "next_slot" in res:
+               next_date = res["next_slot"]
+            try:         
+               if len(first_slot) > 0:
+                  next_date = first_slot[0][:10]
+                  if isinstance(next_date, str):
+                     next_date = first_slot[0][:10]
+                  else:
+                     next_date = first_slot[0]["start_date"][:10]
+
+            except Exception as e:
+               if not os.path.exists("error.log"):
+                  os.mknod("error.log")
+               with open("error.log", "a") as log:
+                  log.write(f"Error while parsing first_slot {first_slot[0]}:\n{e}\n")
+            if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ " in v["name"]:
+               next_date = None 
+            return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
+   except Exception as e:
+      print(f"Error in fetcher: {e}")
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": True}
+
+
+
 IMPFEN = [
    {
       "availabilities_url": "visit_motive_ids=2537716&agenda_ids=465527-465550-465592-465598-465601-465651-465543-465615-465553-465594-465630-465678-465575-465653-466144-466139-466141-466153-466157-465701-465532-465609-466127-466128-466129-466130-466131-466132-466133-466134-466135-466136-466137-466138-466140-466143-466145-466147-466148-466149-466150-466151-466152-466154-466155-466156-466158-466159-466160-466161-465555-465558-465580-465582-465584-465619-465534-466146-465526&insurance_sector=public&practice_ids=158436&destroy_temporary=true&limit=4",
@@ -184,7 +241,8 @@ IMPFEN = [
       "availiabilities_payload": {"begin":"2021-05-26T12:56:49.097+01:00","end":"2021-08-31T12:56:49.097+01:00","purposeQuery":{"minRequiredPeriodString":"PT5M","purposeUuid":"05fe557f-7f0b-4cd0-bf4f-cc79e980a528"},"resourceUuids":["abc2e453-0ffb-4b18-a44b-557bdc548061"],"userGroupUuid":"9cfb637a-7b06-4fdf-bece-cb164fccb8f9"},
       "booking_url": "https://patienten.helios-gesundheit.de/appointments/book-appointment?facility=10&physician=21646&purpose=33239",
       "vaccine": "Biontech",
-      "name": "Helios Klinikum Berlin Buch"  
+      "name": "Helios Klinikum Berlin Buch",
+      "fetcher": fetcher_helios
    },
    # "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra": {
    #    "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
@@ -243,55 +301,6 @@ def send(text, premium=False):
    else:
       return send_msg(text, settings["PRIVATE_CHAT"])
 
-def fetch(v):
-   if "availiabilities_payload" in v:
-      try:      
-         req = urllib.request.Request(v['availabilities_url'], headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
-            "Content-Type": "application/json; charset=utf-8",
-            'Referer': 'https://patienten.helios-gesundheit.de/'})
-         jsondata = json.dumps(v["availiabilities_payload"])
-         jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
-         req.add_header('Content-Length', len(jsondataasbytes))
-         with urllib.request.urlopen(req, jsondata.encode('utf-8')) as req:
-            res = json.loads(req.read().decode("utf-8"))
-            if len(res) > 0:
-               return {"next_date": res, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
-            else:
-               return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
-      except Exception as e:
-         print(req_data)
-         raise e
-
-
-
-   if "IZ " in v["name"]:
-      start_date = "2021-06-07"
-   else:
-      start_date = str(datetime.date.today())
-   req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={start_date}&{v['availabilities_url']}", headers={"User-Agent": "lol"})
-   with urllib.request.urlopen(req) as req:
-         res = json.loads(req.read().decode("utf-8"))
-         print(f'{v["name"]}: {res}')
-         first_slot = [item for sublist in list(filter(None, map(lambda x: x["slots"], res["availabilities"]))) for item in sublist]
-         next_date = None
-         if "next_slot" in res:
-            next_date = res["next_slot"]
-         try:         
-            if len(first_slot) > 0:
-               next_date = first_slot[0][:10]
-               if isinstance(next_date, str):
-                  next_date = first_slot[0][:10]
-               else:
-                  next_date = first_slot[0]["start_date"][:10]
-
-         except Exception as e:
-            if not os.path.exists("error.log"):
-               os.mknod("error.log")
-            with open("error.log", "a") as log:
-               log.write(f"Error while parsing first_slot {first_slot[0]}:\n{e}\n")
-         if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ " in v["name"]:
-            next_date = None 
-         return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
 
 async def extract_all():
    with ThreadPoolExecutor(max_workers=10) as executor:
@@ -300,7 +309,7 @@ async def extract_all():
       tasks = [
           loop.run_in_executor(
               executor,
-              fetch,
+              (i["fetcher"] if "fetcher" in i else fetch_doctolib),
               i
           )
           for i in [i for i in IMPFEN if i["name"] != ""]
