@@ -51,7 +51,7 @@ def fetch_jameda(v):
          if "code" in res and res["code"] == 2000:
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
          else:
-            if instanceof(res, list) is True:
+            if isinstance(res, list) is True:
                return {"next_date": res[0]["slot"], "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
             else:
                return {"next_date": "(date unknown)", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
