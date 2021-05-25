@@ -179,6 +179,13 @@ IMPFEN = [
       "vaccine": "",
       "name": ""  
    },
+   {
+      "availabilities_url": "https://api.patienten.helios-gesundheit.de/api/appointment/booking/querytimeline",
+      "availiabilities_payload": {"begin":"2021-05-26T12:56:49.097+01:00","end":"2021-08-31T12:56:49.097+01:00","purposeQuery":{"minRequiredPeriodString":"PT5M","purposeUuid":"05fe557f-7f0b-4cd0-bf4f-cc79e980a528"},"resourceUuids":["abc2e453-0ffb-4b18-a44b-557bdc548061"],"userGroupUuid":"9cfb637a-7b06-4fdf-bece-cb164fccb8f9"},
+      "booking_url": "https://patienten.helios-gesundheit.de/appointments/book-appointment?facility=10&physician=21646&purpose=33239",
+      "vaccine": "Biontech",
+      "name": "Helios Klinikum Berlin Buch"  
+   },
    # "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra": {
    #    "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
    #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
@@ -238,6 +245,26 @@ def send(text, premium=False):
       return send_msg(text, settings["PRIVATE_CHAT"])
 
 def fetch(v):
+   if "availiabilities_payload" in v:
+      try:      
+         req = urllib.request.Request(v['availabilities_url'], headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
+            "Content-Type": "application/json; charset=utf-8",
+            'Referer': 'https://patienten.helios-gesundheit.de/'})
+         jsondata = json.dumps(v["availiabilities_payload"])
+         jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
+         req.add_header('Content-Length', len(jsondataasbytes))
+         with urllib.request.urlopen(req, jsondata.encode('utf-8')) as req:
+            res = json.loads(req.read().decode("utf-8"))
+            if len(res) > 0:
+               return {"next_date": res, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+            else:
+               return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+      except Exception as e:
+         print(req_data)
+         raise e
+
+
+
    if "IZ " in v["name"]:
       start_date = "2021-06-07"
    else:
