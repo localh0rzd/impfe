@@ -22,7 +22,7 @@ sys.stdin.reconfigure(encoding='utf-8')
 BROADCAST = args.broadcast
 MIN_DATE = datetime.datetime.strptime("2021-06-07", '%Y-%m-%d')
 
-def fetcher_helios(v):
+def fetch_helios(v):
    try:
       req = urllib.request.Request(v['availabilities_url'], headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
          "Content-Type": "application/json; charset=utf-8",
@@ -39,6 +39,24 @@ def fetcher_helios(v):
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
       print(f"Error in fetcher_helis: {e}")
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": True}
+
+def fetch_jameda(v):
+   try:
+      req = urllib.request.Request(v['availabilities_url'], headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
+         "Content-Type": "application/json; charset=utf-8"})
+      with urllib.request.urlopen(req) as req:
+         print(f"Fetched {v['name']}")
+         res = json.loads(req.read().decode("utf-8"))
+         if "code" in res and res["code"] == 2000:
+            return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+         else:
+            if instanceof(res, list) is True:
+               return {"next_date": res[0]["slot"], "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+            else:
+               return {"next_date": "(date unknown)", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+   except Exception as e:
+      print(f"Error in fetch_jameda: {e}")
       return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": True}
 
 
@@ -231,18 +249,31 @@ IMPFEN = [
       "name": "Susanne Eipper"  
    },
    {
+      "availabilities_url": "https://api.patienten.helios-gesundheit.de/api/appointment/booking/querytimeline",
+      "availiabilities_payload": {"begin":"2021-05-26T12:56:49.097+01:00","end":"2021-08-31T12:56:49.097+01:00","purposeQuery":{"minRequiredPeriodString":"PT5M","purposeUuid":"05fe557f-7f0b-4cd0-bf4f-cc79e980a528"},"resourceUuids":["abc2e453-0ffb-4b18-a44b-557bdc548061"],"userGroupUuid":"9cfb637a-7b06-4fdf-bece-cb164fccb8f9"},
+      "booking_url": "https://patienten.helios-gesundheit.de/appointments/book-appointment?facility=10&physician=21646&purpose=33239",
+      "vaccine": "Biontech",
+      "name": "Helios Klinikum Berlin Buch",
+      "fetcher": fetch_helios
+   },
+   {
+      "availabilities_url": "https://booking-service.jameda.de/public/resources/80279091/slots?serviceId=93860",
+      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/thomas-hilzinger/uebersicht/80279091_1/",
+      "vaccine": "Biontech",
+      "name": "Thomas Hilzinger",
+      "fetcher": fetch_jameda  
+   },
+   {
       "availabilities_url": "",
       "booking_url": "",
       "vaccine": "",
       "name": ""  
    },
    {
-      "availabilities_url": "https://api.patienten.helios-gesundheit.de/api/appointment/booking/querytimeline",
-      "availiabilities_payload": {"begin":"2021-05-26T12:56:49.097+01:00","end":"2021-08-31T12:56:49.097+01:00","purposeQuery":{"minRequiredPeriodString":"PT5M","purposeUuid":"05fe557f-7f0b-4cd0-bf4f-cc79e980a528"},"resourceUuids":["abc2e453-0ffb-4b18-a44b-557bdc548061"],"userGroupUuid":"9cfb637a-7b06-4fdf-bece-cb164fccb8f9"},
-      "booking_url": "https://patienten.helios-gesundheit.de/appointments/book-appointment?facility=10&physician=21646&purpose=33239",
-      "vaccine": "Biontech",
-      "name": "Helios Klinikum Berlin Buch",
-      "fetcher": fetcher_helios
+      "availabilities_url": "",
+      "booking_url": "",
+      "vaccine": "",
+      "name": ""  
    },
    # "Dr. Burkhard Schlich & Dr. Kai Schorn-Astra": {
    #    "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
@@ -303,7 +334,7 @@ def send(text, premium=False):
 
 
 async def extract_all():
-   with ThreadPoolExecutor(max_workers=10) as executor:
+   with ThreadPoolExecutor(max_workers=15) as executor:
       loop = asyncio.get_event_loop()
       START_TIME = default_timer()
       tasks = [
