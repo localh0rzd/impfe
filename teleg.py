@@ -404,7 +404,7 @@ async def extract_all():
 <i>Kaputt</i>:
 """
          for error in errorlist:
-            msg += f'<a href="{error["booking_url"]}">{error["name"]}</a>: {error["error"]}'
+            msg += f'<a href="{error["booking_url"]}">{error["name"]}</a>: {error["error"]}\n'
 
       for k,v in { "Biontech": appointments["Biontech"], "Moderna": appointments["Moderna"] }.items():
          premium_msg += f"""
