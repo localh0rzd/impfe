@@ -30,7 +30,7 @@ def fetch_helios(v):
       jsondata = json.dumps(v["availiabilities_payload"])
       jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
       req.add_header('Content-Length', len(jsondataasbytes))
-      with urllib.request.urlopen(req, jsondata.encode('utf-8')) as req:
+      with urllib.request.urlopen(req, jsondata.encode('utf-8'), timeout=45) as req:
          print(f"Fetched {v['name']}")
          res = json.loads(req.read().decode("utf-8"))
          if len(res) > 0:
@@ -52,7 +52,7 @@ def fetch_jameda(v):
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
          else:
             if isinstance(res, list) is True:
-               return {"next_date": res[0]["slot"], "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+               return {"next_date": res[0]["slot"][:10], "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
             else:
                return {"next_date": "(date unknown)", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
@@ -261,6 +261,34 @@ IMPFEN = [
       "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/thomas-hilzinger/uebersicht/80279091_1/",
       "vaccine": "Biontech",
       "name": "Thomas Hilzinger",
+      "fetcher": fetch_jameda  
+   },
+   {
+      "availabilities_url": "https://booking-service.jameda.de/public/resources/80035435/slots?serviceId=93846",
+      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-wolfgang-kreischer/uebersicht/80035435_1/",
+      "vaccine": "Astra",
+      "name": "Dr. med. Wolfgang Kreischer",
+      "fetcher": fetch_jameda  
+   },
+   {
+      "availabilities_url": "https://booking-service.jameda.de/public/resources/81361964/slots?serviceId=93846",
+      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-stephan-ruhla/uebersicht/81361964_1/",
+      "vaccine": "Astra",
+      "name": "Dr. med. Stephan Ruhla",
+      "fetcher": fetch_jameda  
+   },
+   {
+      "availabilities_url": "https://booking-service.jameda.de/public/resources/80085713/slots?serviceId=91657",
+      "booking_url": "https://www.jameda.de/berlin-friedenau/aerzte/frauenaerzte-gynaekologen/dr-cornelius-schwarz/uebersicht/80085713_1/",
+      "vaccine": "Astra",
+      "name": "Dr. med. Cornelius Schwarz",
+      "fetcher": fetch_jameda  
+   },
+   {
+      "availabilities_url": "https://booking-service.jameda.de/public/resources/80085713/slots?serviceId=91657",
+      "booking_url": "https://booking-service.jameda.de/public/resources/81595900/slots?serviceId=93647",
+      "vaccine": "Astra",
+      "name": "Dr. med. Lars Uhlmann",
       "fetcher": fetch_jameda  
    },
    {
