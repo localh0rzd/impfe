@@ -95,7 +95,7 @@ def fetch_doctolib(v):
             return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
    except Exception as e:
       print(f"Error in fetcher: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": True}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": str(e)}
 
 
 
