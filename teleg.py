@@ -206,12 +206,12 @@ IMPFEN = [
       "vaccine": "J&J",
       "name": "MVZ Ambulantes Gynäkologisches Operationszentrum"   
    },
-   {
-      "availabilities_url": "visit_motive_ids=2727573&agenda_ids=445656&insurance_sector=public&practice_ids=107708&destroy_temporary=true&limit=4",
-      "booking_url": "https://www.doctolib.de/praxis/berlin/diabetes-berlin",
-      "vaccine": "Astra",
-      "name": "Diabeteszentrum Kreuzberg"
-   },
+#   {
+#      "availabilities_url": "visit_motive_ids=2727573&agenda_ids=445656&insurance_sector=public&practice_ids=107708&destroy_temporary=true&limit=4",
+#      "booking_url": "https://www.doctolib.de/praxis/berlin/diabetes-berlin",
+#      "vaccine": "Astra",
+#      "name": "Diabeteszentrum Kreuzberg"
+#   },
    {
       "availabilities_url": "visit_motive_ids=2827714&agenda_ids=460952&insurance_sector=public&practice_ids=101708&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-dipl-med-rainer-schwitzkowski-fuer-kinder-und-jugendmedizin",
