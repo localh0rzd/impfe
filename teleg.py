@@ -83,7 +83,6 @@ def fetch_doctolib(v):
                next_date = res["next_slot"]
             try:         
                if len(first_slot) > 0:
-                  next_date = first_slot[0][:10]
                   if isinstance(next_date, str):
                      next_date = first_slot[0][:10]
                   else:
