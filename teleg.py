@@ -72,6 +72,8 @@ def fetch_doctolib(v):
             #print(f'{v["name"]}: {res}')
             print(f'Fetched {v["name"]}')
             first_slot = [item for sublist in list(filter(None, map(lambda x: x["slots"], res["availabilities"]))) for item in sublist]
+            if len(first_slot) > 0 and not isinstance(first_slot[0], str):
+               first_slot = first_slot[0]
             next_date = None
             if "next_slot" in res:
                next_date = res["next_slot"]
@@ -117,7 +119,7 @@ IMPFEN = [
       "name": "IZ THF"
    },
    {
-      "availabilities_url": "visit_motive_ids=2597576&agenda_ids=404658-397960-397955-397956&insurance_sector=public&practice_ids=158433&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=2597576&agenda_ids=397955-404658-397960-397956&insurance_sector=public&practice_ids=158433&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158433",
       "vaccine": "Astra",
       "name": "IZ THF"
