@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys
+import traceback
 import urllib.request
 import urllib.parse
 import json
@@ -22,6 +23,9 @@ sys.stdin.reconfigure(encoding='utf-8')
 BROADCAST = args.broadcast
 MIN_DATE = datetime.datetime.strptime("2021-06-07", '%Y-%m-%d')
 
+def format_exc(e):
+   return "".join("".join(traceback.TracebackException.from_exception(e).format()).splitlines()[-2:])
+
 def fetch_helios(v):
    try:
       req = urllib.request.Request(v['availabilities_url'], headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
@@ -39,7 +43,7 @@ def fetch_helios(v):
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
       print(f"Error in fetcher_helis: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": e}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": format_exc(e)}
 
 def fetch_jameda(v):
    try:
@@ -57,7 +61,7 @@ def fetch_jameda(v):
                return {"next_date": "(date unknown)", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
       print(f"Error in fetch_jameda: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": e}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": format_exc(e)}
 
 
 def fetch_doctolib(v):
@@ -95,7 +99,7 @@ def fetch_doctolib(v):
             return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
    except Exception as e:
       print(f"Error in fetcher: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": e}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": format_exc(e)}
 
 
 
