@@ -93,7 +93,7 @@ def fetch_doctolib(v):
                if not os.path.exists("error.log"):
                   os.mknod("error.log")
                with open("error.log", "a") as log:
-                  log.write(f"Error while parsing first_slot {first_slot[0]}:\n{e}\n")
+                  log.write(f"Error while parsing first_slot {json.dumps(res['availabilities'])}:\n{''.join(''.join(traceback.TracebackException.from_exception(e).format()))}\n")
             if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ " in v["name"]:
                next_date = None 
             return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
