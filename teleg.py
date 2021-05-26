@@ -39,7 +39,7 @@ def fetch_helios(v):
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
       print(f"Error in fetcher_helis: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": str(e)}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": e}
 
 def fetch_jameda(v):
    try:
@@ -57,7 +57,7 @@ def fetch_jameda(v):
                return {"next_date": "(date unknown)", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
       print(f"Error in fetch_jameda: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": True}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": e}
 
 
 def fetch_doctolib(v):
@@ -95,7 +95,7 @@ def fetch_doctolib(v):
             return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
    except Exception as e:
       print(f"Error in fetcher: {e}")
-      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": str(e)}
+      return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": e}
 
 
 
@@ -406,7 +406,7 @@ async def extract_all():
 <i>Kaputt</i>:
 """
          for error in errorlist:
-            msg += f'<a href="{error["booking_url"]}">{error["name"]}</a>: {error["error"]}\n'
+            msg += f'<a href="{error["booking_url"]}">{error["name"]}</a>: {error["error"]} {type(error["error"]).__name__}\n'
 
       for k,v in { "Biontech": appointments["Biontech"], "Moderna": appointments["Moderna"] }.items():
          premium_msg += f"""
