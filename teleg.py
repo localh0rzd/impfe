@@ -268,20 +268,20 @@ IMPFEN = [
       "name": "Thomas Hilzinger",
       "fetcher": fetch_jameda  
    },
-   {
-      "availabilities_url": "https://booking-service.jameda.de/public/resources/80035435/slots?serviceId=93846",
-      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-wolfgang-kreischer/uebersicht/80035435_1/",
-      "vaccine": "Astra",
-      "name": "Dr. med. Wolfgang Kreischer",
-      "fetcher": fetch_jameda  
-   },
-   {
-      "availabilities_url": "https://booking-service.jameda.de/public/resources/81361964/slots?serviceId=93846",
-      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-stephan-ruhla/uebersicht/81361964_1/",
-      "vaccine": "Astra",
-      "name": "Dr. med. Stephan Ruhla",
-      "fetcher": fetch_jameda  
-   },
+   # {
+   #    "availabilities_url": "https://booking-service.jameda.de/public/resources/80035435/slots?serviceId=93846",
+   #    "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-wolfgang-kreischer/uebersicht/80035435_1/",
+   #    "vaccine": "Astra",
+   #    "name": "Dr. med. Wolfgang Kreischer",
+   #    "fetcher": fetch_jameda  
+   # },
+   # {
+   #    "availabilities_url": "https://booking-service.jameda.de/public/resources/81361964/slots?serviceId=93846",
+   #    "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-stephan-ruhla/uebersicht/81361964_1/",
+   #    "vaccine": "Astra",
+   #    "name": "Dr. med. Stephan Ruhla",
+   #    "fetcher": fetch_jameda  
+   # },
    {
       "availabilities_url": "https://booking-service.jameda.de/public/resources/80085713/slots?serviceId=91657",
       "booking_url": "https://www.jameda.de/berlin-friedenau/aerzte/frauenaerzte-gynaekologen/dr-cornelius-schwarz/uebersicht/80085713_1/",
