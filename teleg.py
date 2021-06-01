@@ -283,13 +283,13 @@ IMPFEN = [
       "name": "Dr. med. Cornelius Schwarz",
       "fetcher": fetch_jameda  
    },
-   {
-      "availabilities_url": "https://booking-service.jameda.de/public/resources/81595900/slots?serviceId=93647",
-      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-lars-uhlmann/uebersicht/81595900_1/",
-      "vaccine": "Astra",
-      "name": "Dr. med. Lars Uhlmann",
-      "fetcher": fetch_jameda  
-   },
+#   {
+#      "availabilities_url": "https://booking-service.jameda.de/public/resources/81595900/slots?serviceId=93647",
+#      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-lars-uhlmann/uebersicht/81595900_1/",
+#      "vaccine": "Astra",
+#      "name": "Dr. med. Lars Uhlmann",
+#      "fetcher": fetch_jameda  
+#   },
    {
       "availabilities_url": "",
       "booking_url": "",
