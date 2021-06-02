@@ -18,7 +18,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--broadcast", action="store_true")
 args = parser.parse_args()
 
-sys.stdin.reconfigure(encoding='utf-8')
+#sys.stdin.reconfigure(encoding='utf-8')
 
 BROADCAST = args.broadcast
 MIN_DATE = datetime.datetime.strptime("2021-06-07", '%Y-%m-%d')
@@ -34,7 +34,7 @@ def fetch_helios(v):
       jsondata = json.dumps(v["availiabilities_payload"])
       jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
       req.add_header('Content-Length', len(jsondataasbytes))
-      with urllib.request.urlopen(req, jsondata.encode('utf-8'), timeout=45) as req:
+      with urllib.request.urlopen(req, jsondata.encode('utf-8'), timeout=30) as req:
          print(f"Fetched {v['name']}")
          res = json.loads(req.read().decode("utf-8"))
          if len(res) > 0:
@@ -75,28 +75,34 @@ def fetch_doctolib(v):
             res = json.loads(req.read().decode("utf-8"))
             #print(f'{v["name"]}: {res}')
             print(f'Fetched {v["name"]}')
-            first_slot = [item for sublist in list(filter(None, map(lambda x: x["slots"], res["availabilities"]))) for item in sublist]
-            if len(first_slot) > 0 and not isinstance(first_slot[0], str):
-               first_slot = first_slot[0]
-            next_date = None
+            #first_slot = [item for sublist in list(filter(None, map(lambda x: x["slots"], res["availabilities"]))) for item in sublist]
+            #if len(first_slot) > 0 and not isinstance(first_slot[0], str):
+            #   first_slot = first_slot[0]
+            next_date = next((appdate["date"] for appdate in list(filter(lambda y: len(y["slots"]) > 0, res["availabilities"]))), None)
+            #next_date = None
             if "next_slot" in res:
                next_date = res["next_slot"]
-            try:         
-               if len(first_slot) > 0:
-                  if isinstance(next_date, str):
-                     next_date = first_slot[0][:10]
-                  else:
-                     next_date = first_slot[0]["start_date"][:10]
+            #try:         
+            #   if len(first_slot) > 0:
+            #      if isinstance(next_date, str):
+            #         next_date = first_slot[0][:10]
+            #      else:
+            #         next_date = first_slot[0]["start_date"][:10]
 
-            except Exception as e:
-               if not os.path.exists("error.log"):
-                  os.mknod("error.log")
-               with open("error.log", "a") as log:
-                  log.write(f"Error while parsing first_slot {json.dumps(res['availabilities'])}:\n{''.join(''.join(traceback.TracebackException.from_exception(e).format()))}\n")
+            #except Exception as e:
+            #   if not os.path.exists("error.log"):
+            #      os.mknod("error.log")
+            #   with open("error.log", "a") as log:
+            #      log.write(f"Error while parsing first_slot {json.dumps(res['availabilities'])}:\n{''.join(''.join(traceback.TracebackException.from_exception(e).format()))}\n")
             if next_date is not None and datetime.datetime.strptime(next_date, '%Y-%m-%d') < MIN_DATE and "IZ " in v["name"]:
                next_date = None 
             return {"next_date": next_date, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "total": res["total"]}
    except Exception as e:
+      if not os.path.exists("error.log"):
+         os.mknod("error.log")
+      with open("error.log", "a") as log:
+         log.write(f"Error in fetcher:\n{json.dumps(res)}\n{''.join(''.join(traceback.TracebackException.from_exception(e).format()))}\n")
+
       print(f"Error in fetcher: {e}")
       return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": format_exc(e)}
 
@@ -361,7 +367,7 @@ def send(text, premium=False):
 
 
 async def extract_all():
-   with ThreadPoolExecutor(max_workers=15) as executor:
+   with ThreadPoolExecutor(max_workers=20) as executor:
       loop = asyncio.get_event_loop()
       START_TIME = default_timer()
       tasks = [
