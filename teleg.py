@@ -14,14 +14,44 @@ from timeit import default_timer
 from concurrent.futures import ThreadPoolExecutor
 from settings import settings
 from time import sleep
+from itertools import groupby
 parser = argparse.ArgumentParser()
 parser.add_argument("-b", "--broadcast", action="store_true")
+parser.add_argument("-l", "--list", action="store_true")
 args = parser.parse_args()
 
 #sys.stdin.reconfigure(encoding='utf-8')
 
 BROADCAST = args.broadcast
+LIST = args.list
 MIN_DATE = datetime.datetime.strptime("2021-06-07", '%Y-%m-%d')
+
+def splitter(msg):
+   if len(msg) > 4096:
+      msgs = []
+      while len(msg) > 4096:                  
+         newline_starts = [m.start() for m in re.finditer('\n', msg)]
+         closest = min(newline_starts, key=lambda x:abs(x-4096))
+         msgs.append(msg[:closest])
+         msg = msg[closest+1:]
+      msgs.append(msg)
+      return msgs   
+   return [msg]
+
+
+
+def stringify_list():
+   practices = sorted(filter((lambda x: True if len(x['name']) > 1 else False), IMPFEN), key=lambda x: x['name'])
+   for key, group in groupby(practices, lambda x: x['name']):
+    print(f"{key}, {next(group)['booking_url']}")
+    print("")
+   msg = "<b>Liste aktuell abgerufener Praxen:</b>\n"
+   for key, group in groupby(practices, lambda x: x['name']):
+      e = next(group)
+      msg += f"<a href='{e['booking_url']}'>{e['name']}</a>\n"
+   for part in splitter(msg):
+      print(part)
+      send_msg(part, settings['PRIVATE_CHAT'] if not args.broadcast else settings['BROADCAST_CHAT'])
 
 def format_exc(e):
    return "".join("".join(traceback.TracebackException.from_exception(e).format()).splitlines()[-2:])
@@ -537,6 +567,9 @@ async def extract_all():
          #    file.flush()
          #    send(msg)   
 
-loop = asyncio.get_event_loop()
-future = asyncio.ensure_future(extract_all())
-loop.run_until_complete(future)
+if not args.list:
+   loop = asyncio.get_event_loop()
+   future = asyncio.ensure_future(extract_all())
+   loop.run_until_complete(future)
+else:
+   stringify_list()
