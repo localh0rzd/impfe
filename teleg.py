@@ -297,6 +297,84 @@ IMPFEN = [
 #      "fetcher": fetch_jameda  
 #   },
    {
+      "availabilities_url": "visit_motive_ids=2764198&agenda_ids=190434&insurance_sector=public&practice_ids=114976&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/allgemeinmedizin/berlin/sophie-ruggeberg",
+      "vaccine": "Astra",
+      "name": "Dr. med. Sophie Rüggeberg"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2886231&agenda_ids=190434&insurance_sector=public&practice_ids=114976&limit=4",
+      "booking_url": "https://www.doctolib.de/allgemeinmedizin/berlin/sophie-ruggeberg",
+      "vaccine": "J&J",
+      "name": "Dr. med. Sophie Rüggeberg"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2862419&agenda_ids=305777&insurance_sector=public&practice_ids=120549&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/babak-mayelzadeh",
+      "vaccine": "Astra",
+      "name": "Dr. med. Babak Mayelzadeh"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2879179&agenda_ids=305777&insurance_sector=public&practice_ids=120549&limit=4",
+      "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/babak-mayelzadeh",
+      "vaccine": "J&J",
+      "name": "Dr. med. Babak Mayelzadeh"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2812137&agenda_ids=367810&insurance_sector=public&practice_ids=145837&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/gulcan-kazak-yildirim",
+      "vaccine": "Astra",
+      "name": "Dr. med. Gülcan Kazak-Yildirim"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2733996&agenda_ids=56915&insurance_sector=public&practice_ids=22563&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/rafael-hardy",
+      "vaccine": "Biontech",
+      "name": "Dr. Rafael Hardy"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2754056&agenda_ids=452595&insurance_sector=public&practice_ids=132888&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/allgemeinmedizin/berlin/benjamin-lott",
+      "vaccine": "Biontech",
+      "name": "Benjamin Lott"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2779622&agenda_ids=452595&insurance_sector=public&practice_ids=132888&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/allgemeinmedizin/berlin/benjamin-lott",
+      "vaccine": "Astra",
+      "name": "Benjamin Lott"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2784656&agenda_ids=268801&insurance_sector=public&practice_ids=178663&limit=4",
+      "booking_url": "https://www.doctolib.de/innere-und-allgemeinmediziner/berlin/oliver-staeck",
+      "vaccine": "Astra",
+      "name": "Priv.-Doz. Dr. med. Oliver Staeck"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2885945&agenda_ids=268801&insurance_sector=public&practice_ids=178663&limit=4",
+      "booking_url": "https://www.doctolib.de/innere-und-allgemeinmediziner/berlin/oliver-staeck",
+      "vaccine": "J&J",
+      "name": "Priv.-Doz. Dr. med. Oliver Staeck"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2811460&agenda_ids=464751&insurance_sector=public&practice_ids=28436&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-fuer-orthopaedie-und-unfallchirurgie-neukoelln",
+      "vaccine": "Astra",
+      "name": "Karnas & Walczak-Pohlig"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2771550&agenda_ids=456547&insurance_sector=public&practice_ids=83901&destroy_temporary=true&limit=4",
+      "booking_url": "https://www.doctolib.de/gemeinschaftspraxis/berlin/privatpraxis-fuer-integrative-medizin-dr-med-michael-oppel-und-lucia-maria-braun",
+      "vaccine": "Astra",
+      "name": "Privatpraxis für integrative Medizin"  
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2902792&agenda_ids=456547&insurance_sector=public&practice_ids=83901&limit=4",
+      "booking_url": "https://www.doctolib.de/gemeinschaftspraxis/berlin/privatpraxis-fuer-integrative-medizin-dr-med-michael-oppel-und-lucia-maria-braun",
+      "vaccine": "J&J",
+      "name": "Privatpraxis für integrative Medizin"  
+   },
+   {
       "availabilities_url": "",
       "booking_url": "",
       "vaccine": "",
