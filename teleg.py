@@ -194,7 +194,7 @@ IMPFEN = [
       "name": "Bonedoctor"   
    },
    {
-      "availabilities_url": "visit_motive_ids=2780870&agenda_ids=284796-465045&insurance_sector=public&practice_ids=112562&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=2780870&agenda_ids=284794-284796-465045-340728&insurance_sector=public&practice_ids=112562&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/mvz-dr-kaleth-kollegen",
       "vaccine": "Astra",   
       "name": "MVZ Dr. Kaleth & Kollegen"
