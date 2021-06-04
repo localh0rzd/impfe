@@ -266,6 +266,12 @@ IMPFEN = [
       "name": "GKH Havelhöhe - Impfzentrum"
    },
    {
+      "availabilities_url": "visit_motive_ids=2898162&agenda_ids=469719&insurance_sector=public&practice_ids=162056&limit=4",
+      "booking_url": "https://www.doctolib.de/krankenhaus/berlin/gkh-havelhoehe-impfzentrum",
+      "vaccine": "J&J",
+      "name": "GKH Havelhöhe - Impfzentrum"
+   },
+   {
       "availabilities_url": "visit_motive_ids=2871021&agenda_ids=477570&insurance_sector=public&practice_ids=153998&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/zahnarztpraxis/berlin/aubacke-zahnarztpraxis-daniel-und-pirk",
       "vaccine": "Astra",
