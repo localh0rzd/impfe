@@ -501,6 +501,7 @@ async def extract_all():
       msg = ""
       premium_msg = ""
       for k,v in appointments.items():
+         if len(appointments[k]) == 0: continue
          msg += f"""
 <b>{k}</b>:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
@@ -515,6 +516,7 @@ async def extract_all():
             msg += f'<a href="{error["booking_url"]}">{error["name"]}</a>: {error["error"]} {type(error["error"]).__name__}\n'
 
       for k,v in { "Biontech": appointments["Biontech"], "Moderna": appointments["Moderna"] }.items():
+         if len(appointments[k]) == 0: continue
          premium_msg += f"""
 <b>{k}</b>:
 {"Nüscht 😕" if len(appointments[k]) == 0 else "".join(appointments[k])}
@@ -532,6 +534,7 @@ async def extract_all():
                except:
                   pass
             print(msg)
+            if len(msg) == 0: msg = "<i>Here be dragons</i>"
             msg_metadata = send(msg)
             store["last_message_metadata"] = msg_metadata
             store["message"] = msg
@@ -543,6 +546,7 @@ async def extract_all():
                except:
                   pass
             print(premium_msg)
+            if len(premium_msg) == 0: premium_msg = "<i>Here be dragons</i>"
             premium_msg_metadata = send(premium_msg, True)
             store["last_premium_message_metadata"] = premium_msg_metadata
             store["premium_message"] = premium_msg
