@@ -96,11 +96,11 @@ def fetch_jameda(v):
 
 def fetch_doctolib(v):
    try:
-      if "IZ " in v["name"]:
-         start_date = "2021-06-07"
-      else:
-         start_date = str(datetime.date.today())
-      req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={start_date}&{v['availabilities_url']}", headers={"User-Agent": "lol"})
+      #if "IZ " in v["name"]:
+      #   start_date = "2021-06-07"
+      #else:
+      start_date = str(datetime.date.today())
+      req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={str(datetime.date.today())}&{v['availabilities_url']}", headers={"User-Agent": "lol"})
       with urllib.request.urlopen(req) as req:
             res = json.loads(req.read().decode("utf-8"))
             #print(f'{v["name"]}: {res}')
@@ -303,27 +303,13 @@ IMPFEN = [
       "name": "Helios Klinikum Berlin Buch",
       "fetcher": fetch_helios
    },
-   {
-      "availabilities_url": "https://booking-service.jameda.de/public/resources/80279091/slots?serviceId=93860",
-      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/thomas-hilzinger/uebersicht/80279091_1/",
-      "vaccine": "Biontech",
-      "name": "Thomas Hilzinger",
-      "fetcher": fetch_jameda  
-   },
-   # {
-   #    "availabilities_url": "https://booking-service.jameda.de/public/resources/80035435/slots?serviceId=93846",
-   #    "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-wolfgang-kreischer/uebersicht/80035435_1/",
-   #    "vaccine": "Astra",
-   #    "name": "Dr. med. Wolfgang Kreischer",
-   #    "fetcher": fetch_jameda  
-   # },
-   # {
-   #    "availabilities_url": "https://booking-service.jameda.de/public/resources/81361964/slots?serviceId=93846",
-   #    "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-stephan-ruhla/uebersicht/81361964_1/",
-   #    "vaccine": "Astra",
-   #    "name": "Dr. med. Stephan Ruhla",
-   #    "fetcher": fetch_jameda  
-   # },
+#   {
+#      "availabilities_url": "https://booking-service.jameda.de/public/resources/80279091/slots?serviceId=93860",
+#      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/thomas-hilzinger/uebersicht/80279091_1/",
+#      "vaccine": "Biontech",
+#      "name": "Thomas Hilzinger",
+#      "fetcher": fetch_jameda  
+#   },
    {
       "availabilities_url": "https://booking-service.jameda.de/public/resources/80085713/slots?serviceId=91657",
       "booking_url": "https://www.jameda.de/berlin-friedenau/aerzte/frauenaerzte-gynaekologen/dr-cornelius-schwarz/uebersicht/80085713_1/",
@@ -331,13 +317,6 @@ IMPFEN = [
       "name": "Dr. med. Cornelius Schwarz",
       "fetcher": fetch_jameda  
    },
-#   {
-#      "availabilities_url": "https://booking-service.jameda.de/public/resources/81595900/slots?serviceId=93647",
-#      "booking_url": "https://www.jameda.de/berlin/aerzte/innere-allgemeinmediziner/dr-lars-uhlmann/uebersicht/81595900_1/",
-#      "vaccine": "Astra",
-#      "name": "Dr. med. Lars Uhlmann",
-#      "fetcher": fetch_jameda  
-#   },
    {
       "availabilities_url": "visit_motive_ids=2764198&agenda_ids=190434&insurance_sector=public&practice_ids=114976&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/allgemeinmedizin/berlin/sophie-ruggeberg",
@@ -504,9 +483,9 @@ async def extract_all():
       ]
 
       appointments = {
-         "Astra": [],
          "Biontech": [],
          "Moderna": [],
+         "Astra": [],
          "J&J": []
       }
       responses = sorted(await asyncio.gather(*tasks), key=lambda v: v["name"])
