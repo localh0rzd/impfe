@@ -534,10 +534,11 @@ async def extract_all():
                except:
                   pass
             print(msg)
-            if len(msg) == 0: msg = "<i>Here be dragons</i>"
-            msg_metadata = send(msg)
-            store["last_message_metadata"] = msg_metadata
-            store["message"] = msg
+            #if len(msg) == 0: msg = "<i>Here be dragons</i>"
+            if len(msg) > 0:
+               msg_metadata = send(msg)
+               store["last_message_metadata"] = msg_metadata
+               store["message"] = msg
          if premium_msg != store["premium_message"]:
             if "last_premium_message_metadata" in store:
                try:            
@@ -546,10 +547,11 @@ async def extract_all():
                except:
                   pass
             print(premium_msg)
-            if len(premium_msg) == 0: premium_msg = "<i>Here be dragons</i>"
-            premium_msg_metadata = send(premium_msg, True)
-            store["last_premium_message_metadata"] = premium_msg_metadata
-            store["premium_message"] = premium_msg
+            #if len(premium_msg) == 0: premium_msg = "<i>Here be dragons</i>"
+            if len(premium_msg) > 0:            
+               premium_msg_metadata = send(premium_msg, True)
+               store["last_premium_message_metadata"] = premium_msg_metadata
+               store["premium_message"] = premium_msg
          file.seek(0)
          json.dump(store, file)
          file.truncate()
