@@ -131,7 +131,11 @@ def fetch_doctolib(v):
       if not os.path.exists("error.log"):
          os.mknod("error.log")
       with open("error.log", "a") as log:
-         log.write(f"Error in fetcher:\n{json.dumps(res)}\n{''.join(''.join(traceback.TracebackException.from_exception(e).format()))}\n")
+         try:
+            log.write(f"Error in fetcher:\n{json.dumps(res)}\n{''.join(''.join(traceback.TracebackException.from_exception(e).format()))}\n")
+         except Exception as ex:
+            log.write(f"Error in logging fetcher error:\n{''.join(''.join(traceback.TracebackException.from_exception(ex).format()))}\n")
+
 
       print(f"Error in fetcher: {e}")
       return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"], "error": format_exc(e)}
@@ -394,12 +398,6 @@ IMPFEN = [
       "booking_url": "https://www.doctolib.de/gemeinschaftspraxis/berlin/privatpraxis-fuer-integrative-medizin-dr-med-michael-oppel-und-lucia-maria-braun",
       "vaccine": "J&J",
       "name": "Privatpraxis für integrative Medizin"  
-   },
-   {
-      "availabilities_url": "visit_motive_ids=2884322&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
-      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn",
-      "vaccine": "Astra",
-      "name": "Dr. Burkhard Schlich & Dr. Kai Schorn"  
    },
    {
       "availabilities_url": "visit_motive_ids=2884332&agenda_ids=444401&insurance_sector=public&practice_ids=141729&limit=4",
