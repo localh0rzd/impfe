@@ -399,12 +399,12 @@ IMPFEN = [
       "vaccine": "J&J",
       "name": "Privatpraxis für integrative Medizin"  
    },
-   {
-      "availabilities_url": "visit_motive_ids=2884332&agenda_ids=444401&insurance_sector=public&practice_ids=141729&limit=4",
-      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn",
-      "vaccine": "J&J",
-      "name": "Dr. Burkhard Schlich & Dr. Kai Schorn"  
-   },
+#   {
+#      "availabilities_url": "visit_motive_ids=2884332&agenda_ids=444401&insurance_sector=public&practice_ids=141729&limit=4",
+#      "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn",
+#      "vaccine": "J&J",
+#      "name": "Dr. Burkhard Schlich & Dr. Kai Schorn"  
+#   },
    {
       "availabilities_url": "",
       "booking_url": "",
