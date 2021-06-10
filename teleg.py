@@ -68,7 +68,12 @@ def fetch_helios(v):
          print(f"Fetched {v['name']}")
          res = json.loads(req.read().decode("utf-8"))
          if len(res) > 0:
-            return {"next_date": "Die haben was", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+            dates = list(set(map(lambda x: x["begin"][:10], res)))
+            if len(dates) > 1:
+               date_str = f"{min(dates)}-{max(dates)}"
+            else:
+               date_str = dates[0]
+            return {"next_date": f"{date_str}, {len(dates)} slots", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
          else:
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
