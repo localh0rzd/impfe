@@ -73,7 +73,7 @@ def fetch_helios(v):
                date_str = f"{min(dates)}-{max(dates)}"
             else:
                date_str = dates[0]
-            return {"next_date": f"{date_str}, {len(dates)} slots", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
+            return {"next_date": f"{date_str}, {len(res)} slots", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
          else:
             return {"next_date": None, "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
    except Exception as e:
