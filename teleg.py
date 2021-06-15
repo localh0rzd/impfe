@@ -70,7 +70,7 @@ def fetch_helios(v):
          if len(res) > 0:
             dates = list(set(map(lambda x: x["begin"][:10], res)))
             if len(dates) > 1:
-               date_str = f"{min(dates)}-{max(dates)}"
+               date_str = f"{min(dates)} - {max(dates)}"
             else:
                date_str = dates[0]
             return {"next_date": f"{date_str}, {len(res)} slot{'s' if len(res) > 1 else ''}", "booking_url": v["booking_url"], "vaccine": v["vaccine"], "name": v["name"]}
