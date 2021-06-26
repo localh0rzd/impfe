@@ -161,7 +161,7 @@ IMPFEN = [
       "name": "IZ TXL"
    },
    {
-      "availabilities_url": "visit_motive_ids=2537716&agenda_ids=467894-467934-467937-467938-467939-467893-467895-467896-467900-467901-467905-467910-467911-467912-467908-467933-467940-467903-467906-467907-467935-467936-467897-467898-467899&insurance_sector=public&practice_ids=191611&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=2537716&agenda_ids=493635-493640-493645-493646-493648-493630-493631-493632-493636-493638-493639-493642-493643-493647-493649-493650-493652-493653-493634-493644&insurance_sector=public&practice_ids=191611&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-191611",
       "vaccine": "Moderna",
       "name": "IZ THF"
