@@ -351,12 +351,6 @@ IMPFEN = [
       "name": "Dr. med. Babak Mayelzadeh"  
    },
    {
-      "availabilities_url": "visit_motive_ids=2812137&agenda_ids=367810&insurance_sector=public&practice_ids=145837&destroy_temporary=true&limit=4",
-      "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/gulcan-kazak-yildirim",
-      "vaccine": "Astra",
-      "name": "Dr. med. Gülcan Kazak-Yildirim"  
-   },
-   {
       "availabilities_url": "visit_motive_ids=2733996&agenda_ids=56915&insurance_sector=public&practice_ids=22563&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/rafael-hardy",
       "vaccine": "Biontech",
