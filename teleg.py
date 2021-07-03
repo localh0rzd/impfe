@@ -185,6 +185,12 @@ IMPFEN = [
       "name": "IZ Messe"
    },
    {
+      "availabilities_url": "visit_motive_ids=2597576&agenda_ids=493308-493317-493328-493350-494972-493320-493322-493324-493331-493314-493329-493334-493335-493339-493338-493340-493300-493306-493326-493333-493353-493343-493345-493347-493348-493352-493298-494957-494952-494968-494981-494954-494974-494962-494977-494978-494964-494950-494966-494979&insurance_sector=public&practice_ids=195952&limit=4",
+      "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-195952",
+      "vaccine": "Astra"
+      "name": "IZ Messe"
+   },
+   {
       "availabilities_url": "visit_motive_ids=2495719&agenda_ids=397800-397776-402408-397766&insurance_sector=public&practice_ids=158431&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158431",
       "vaccine": "Biontech",
