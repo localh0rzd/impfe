@@ -149,7 +149,7 @@ def fetch_doctolib(v):
 
 IMPFEN = [
    {
-      "availabilities_url": "visit_motive_ids=2537716&agenda_ids=465615-465575-466153-466143-466151-465558-465582-465619-465592-465651-466157-465701-465526-465630-465527-465532-465543-465550-465553-465580-465594-465598-465601-465653-465678-466127-466133-466139-466141-466144-466146-465609-466128-466129-466130-466131-466132-466134-466135-466136-466137-466138-466140-466145-466147-466148-466149-466150-466152-466154-466155-466156-466158-466159-466160-466161-465555-465584-465534&insurance_sector=public&practice_ids=191612&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=2537716&agenda_ids=466146-466147&insurance_sector=public&practice_ids=191612&limit=4",
       "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-191612",
       "vaccine": "Moderna",
       "name": "IZ TXL"
