@@ -167,6 +167,12 @@ IMPFEN = [
       "name": "IZ THF"
    },
    {
+      "availabilities_url": "visit_motive_ids=2537716&agenda_ids=499514-499517-499518-499522-499524-499529-499570-499533-499685-499527-499531-499591-499504-499579-499592-499594-499588-499593-499595-499597&insurance_sector=public&practice_ids=158433&limit=4",
+      "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin/booking/availabilities?motiveKey=Erstimpfung%20Covid-19%20%28Moderna%29%20inkl.%20Zweittermin-1779&pid=practice-158433&placeId=practice-158433&specialityId=1779",
+      "vaccine": "Moderna",
+      "name": "IZ THF"
+   },
+   {
       "availabilities_url": "visit_motive_ids=2495719&agenda_ids=404654-457215-457244-397972-457210-457239-457213-457278-457283-457304-457306-457229-457234-457299-457212-457216-457288-457291-457315-457227-457204-457237-457296-397974-457312-457280-457206-457310-457319-397973-457243-457208-457218-457245-457274-457321&insurance_sector=public&practice_ids=158435&destroy_temporary=true&limit=4",      
       "booking_url": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158435",
       "vaccine": "Biontech",
