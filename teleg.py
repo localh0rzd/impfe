@@ -331,13 +331,6 @@ IMPFEN = [
 #      "fetcher": fetch_jameda  
 #   },
    {
-      "availabilities_url": "https://booking-service.jameda.de/public/resources/80085713/slots?serviceId=91657",
-      "booking_url": "https://www.jameda.de/berlin-friedenau/aerzte/frauenaerzte-gynaekologen/dr-cornelius-schwarz/uebersicht/80085713_1/",
-      "vaccine": "Astra",
-      "name": "Dr. med. Cornelius Schwarz",
-      "fetcher": fetch_jameda  
-   },
-   {
       "availabilities_url": "visit_motive_ids=2764198&agenda_ids=190434&insurance_sector=public&practice_ids=114976&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/allgemeinmedizin/berlin/sophie-ruggeberg",
       "vaccine": "Astra",
