@@ -420,10 +420,31 @@ IMPFEN = [
       "vaccine": "",
       "name": ""  
    },
-   # "Dr. Burkhard Schlich & Dr. Kai Schorn-Biontech": {
-   #    "availabilities_url": "visit_motive_ids=2884324&agenda_ids=444401&insurance_sector=public&practice_ids=141729&destroy_temporary=true&limit=4",
-   #    "booking_url": "https://www.doctolib.de/praxis/berlin/dr-burkhard-schlich-dr-kai-schorn"   
-   # },
+   {
+      "availabilities_url": "visit_motive_ids=2799238&agenda_ids=462869&insurance_sector=public&practice_ids=194060&limit=4",
+      "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/impfpraxis-diagnostikum-berlin?pid=practice-194060&utm_campaign=website-button&utm_source=impfpraxis-diagnostikum-berlin-website-button&utm_medium=referral&utm_content=option-1&utm_term=impfpraxis-diagnostikum-berlin",
+      "vaccine": "Astra",
+      "name": "Impfpraxis Diagnostikum Berlin"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2799350&agenda_ids=462868&insurance_sector=public&practice_ids=194060&limit=4",
+      "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/impfpraxis-diagnostikum-berlin?pid=practice-194060&utm_campaign=website-button&utm_source=impfpraxis-diagnostikum-berlin-website-button&utm_medium=referral&utm_content=option-1&utm_term=impfpraxis-diagnostikum-berlin",
+      "vaccine": "Biontech",
+      "name": "Impfpraxis Diagnostikum Berlin"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2895775&agenda_ids=482183&insurance_sector=public&practice_ids=194060&limit=4",
+      "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/impfpraxis-diagnostikum-berlin?pid=practice-194060&utm_campaign=website-button&utm_source=impfpraxis-diagnostikum-berlin-website-button&utm_medium=referral&utm_content=option-1&utm_term=impfpraxis-diagnostikum-berlin",
+      "vaccine": "J&J",
+      "name": "Impfpraxis Diagnostikum Berlin"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2961191&agenda_ids=501562&insurance_sector=public&practice_ids=194060&limit=4",
+      "booking_url": "https://www.doctolib.de/medizinisches-versorgungszentrum-mvz/berlin/impfpraxis-diagnostikum-berlin?pid=practice-194060&utm_campaign=website-button&utm_source=impfpraxis-diagnostikum-berlin-website-button&utm_medium=referral&utm_content=option-1&utm_term=impfpraxis-diagnostikum-berlin",
+      "vaccine": "Moderna",
+      "name": "Impfpraxis Diagnostikum Berlin"
+   },
+
 ]
 
 def delete_msg(chat, msg):
