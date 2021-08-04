@@ -208,16 +208,10 @@ IMPFEN = [
       "name": "Dr. Buck"
    },
    {
-      "availabilities_url": "visit_motive_ids=2854065&agenda_ids=473564-473533&insurance_sector=public&practice_ids=110842&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=2864604&agenda_ids=473564-473533&insurance_sector=public&practice_ids=110842&limit=4",
       "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-dr-vallee",
-      "vaccine": "Astra",
-      "name": "Dr. Vallée"
-   },
-   {
-      "availabilities_url": "visit_motive_ids=2885284&agenda_ids=473564-473533&insurance_sector=public&practice_ids=110842&limit=4",
-      "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-dr-vallee",
-      "vaccine": "J&J",
-      "name": "Dr. Vallée"
+      "vaccine": "Biontech",
+      "name": "Praxis Dr. Vallée"
    },
    {
       "availabilities_url": "visit_motive_ids=2854139&agenda_ids=469346&insurance_sector=public&practice_ids=76464&limit=4",
