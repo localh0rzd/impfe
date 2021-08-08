@@ -256,15 +256,9 @@ IMPFEN = [
 #      "name": "Diabeteszentrum Kreuzberg"
 #   },
    {
-      "availabilities_url": "visit_motive_ids=2827714&agenda_ids=460952&insurance_sector=public&practice_ids=101708&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=2789858&agenda_ids=460952&insurance_sector=public&practice_ids=101708&limit=4",
       "booking_url": "https://www.doctolib.de/praxis/berlin/praxis-dipl-med-rainer-schwitzkowski-fuer-kinder-und-jugendmedizin",
-      "vaccine": "Astra",
-      "name": "Praxis für Kinder- und Jugendmedizin - Dr. med. Schönbeck & Dipl. med. Rainer Schwitzkowski"
-   },
-   {
-      "availabilities_url": "visit_motive_ids=2811098&agenda_ids=464630&insurance_sector=public&practice_ids=114350&destroy_temporary=true&limit=4",
-      "booking_url": "https://www.doctolib.de/einzelpraxis/berlin/dr-med-frank-werner-kirstein",
-      "vaccine": "Astra",
+      "vaccine": "Biontech",
       "name": "Praxis für Kinder- und Jugendmedizin - Dr. med. Schönbeck & Dipl. med. Rainer Schwitzkowski"
    },
    {
