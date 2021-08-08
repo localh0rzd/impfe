@@ -262,7 +262,7 @@ IMPFEN = [
       "name": "Praxis für Kinder- und Jugendmedizin - Dr. med. Schönbeck & Dipl. med. Rainer Schwitzkowski"
    },
    {
-      "availabilities_url": "visit_motive_ids=2836657&agenda_ids=469719&practice_ids=162056&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=3011527&agenda_ids=469719&practice_ids=162056&destroy_temporary=true&limit=4",
       "booking_url": "https://www.doctolib.de/krankenhaus/berlin/gkh-havelhoehe-impfzentrum",
       "vaccine": "Astra",
       "name": "GKH Havelhöhe - Impfzentrum"
