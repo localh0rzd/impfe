@@ -105,7 +105,7 @@ def fetch_doctolib(v):
       #   start_date = "2021-06-07"
       #else:
       start_date = str(datetime.date.today())
-      req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={str(datetime.date.today())}&{v['availabilities_url']}", headers={"User-Agent": "lol"})
+      req = urllib.request.Request(f"https://www.doctolib.de/availabilities.json?start_date={str(datetime.date.today())}&{v['availabilities_url']}&__cf_chl_jschl_tk__=pmd_ec5a7fc0a95a5cde0fe6b21e0601ee10d53871c4-1629215646-0-gqNtZGzNAg2jcnBszQvO", headers={"User-Agent": "lol"})
       with urllib.request.urlopen(req) as req:
             res = json.loads(req.read().decode("utf-8"))
             #print(f'{v["name"]}: {res}')
@@ -331,16 +331,22 @@ IMPFEN = [
       "name": "Dr. med. Sophie Rüggeberg"  
    },
    {
-      "availabilities_url": "visit_motive_ids=2862419&agenda_ids=305777&insurance_sector=public&practice_ids=120549&destroy_temporary=true&limit=4",
+      "availabilities_url": "visit_motive_ids=3013229&agenda_ids=305777&insurance_sector=public&practice_ids=120549&limit=4",
       "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/babak-mayelzadeh",
       "vaccine": "Astra",
-      "name": "Dr. med. Babak Mayelzadeh"  
+      "name": "Babak Mayelzadeh"
    },
    {
       "availabilities_url": "visit_motive_ids=2879179&agenda_ids=305777&insurance_sector=public&practice_ids=120549&limit=4",
       "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/babak-mayelzadeh",
       "vaccine": "J&J",
-      "name": "Dr. med. Babak Mayelzadeh"  
+      "name": "Babak Mayelzadeh"
+   },
+   {
+      "availabilities_url": "visit_motive_ids=2860949&agenda_ids=305777&insurance_sector=public&practice_ids=120549&limit=4",
+      "booking_url": "https://www.doctolib.de/facharzt-fur-hno/berlin/babak-mayelzadeh",
+      "vaccine": "Biontech",
+      "name": "Babak Mayelzadeh"
    },
    {
       "availabilities_url": "visit_motive_ids=2733996&agenda_ids=56915&insurance_sector=public&practice_ids=22563&destroy_temporary=true&limit=4",
